@@ -10,7 +10,7 @@ curl 'https://api.exchangeratesapi.io/latest?base=USD&symbols=BRL' | jq -r .rate
 curl 'https://api.exchangeratesapi.io/latest?base=EUR&symbols=BRL' | jq -r .rates.BRL >> ./today-rate
 USD_RATE=`awk 'NR==1' ./today-rate`
 EUR_RATE=`awk 'NR==2' ./today-rate`
-P_SPREAD=0.98
+P_SPREAD=0.9702
 PAYONEER_DOLLAR=$(expr $USD_RATE*$P_SPREAD | bc)
 PAYONEER_EURO=$(expr $EUR_RATE*$P_SPREAD | bc)
 USD_TOTAL=$(expr $PAYONEER_DOLLAR*$USD_TOTAL_FLAT_RATE_INCOME | bc)
